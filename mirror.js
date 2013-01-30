@@ -23,7 +23,7 @@ var fetch = function(dir, cb){
   var opt = {
     "cwd" : dir
   }
-  exec("git fetch --all", opt, function(err){
+  exec("git fetch --all", opt, function(err, out){
     cb(err)
   })
 }
@@ -31,7 +31,7 @@ var clone = function(dir, url, cb){
   var opt = {
     "cwd" : dir
   }
-  exec("git clone --mirror --bare " + url, opt, function(err){
+  exec("git clone --mirror --bare " + url, opt, function(err,out){
     cb(err)
   })
 }

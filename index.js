@@ -1,16 +1,23 @@
 var mirror = require("./mirror")
-var api = require("./api")({})
+var Github = require('github');
+var github = new Github({
+  version : "3.0.0",
+});
+
 var async = require("async");
 
 var mirrorUser = function(user, cb){
-  api.getRepos(user, function(err, repositories){
-    mirrorRepos(repositories, cb);
+  var param = {
+    user : user
+  }
+  github.repos.getFromUser(param, function(err, repos){
+    mirrorRepos(repos, cb);
   });
 };
 
-var mirrorRepos = function(repositories, cb){
+var mirrorRepos = function(repos, cb){
   var tasks = [];
-  repositories.forEach(function(repo){
+  repos.forEach(function(repo){
     tasks.push(function(next){
       console.log("start  " + repo.full_name+ " mirroring");
       mirror(mirrorDir, repo, function(err){

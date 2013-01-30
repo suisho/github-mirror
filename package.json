@@ -4,10 +4,10 @@
   "description": "ERROR: No README.md file found!",
   "main": "index.js",
   "dependencies": {
-    "github": "~0.1.8",
     "mkdirp": "~0.3.4",
     "request": "~2.12.0",
-    "async": "~0.1.22"
+    "async": "~0.1.22",
+    "github": "~0.1.8"
   },
   "devDependencies": {},
   "scripts": {
